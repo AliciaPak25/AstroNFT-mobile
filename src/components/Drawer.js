@@ -1,8 +1,10 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../screens/homeScreen';
-/* import CitiesScreen from '../screens/CitiesScreen';
-import Tabs from './Tabs'; */
+import ProductsScreen from '../screens/productsScreen';
+import ContactScreen from '../screens/contactScreen';
+import ShoppingCartScreen from '../screens/shoppingCartScreen';
+import UserScreen from '../screens/user/UserScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -10,8 +12,10 @@ export default function DrawerNavigator() {
     return (
         <Drawer.Navigator initialRouteName='Home'>
             <Drawer.Screen name='Home' component={HomeScreen} />
-         {/*    <Drawer.Screen name='Cities' component={CitiesScreen} />
-            <Drawer.Screen name='User' component={Tabs} /> */}
+            <Drawer.Screen name='Products' component={ProductsScreen} />
+            <Drawer.Screen name='Contact' component={ContactScreen} />
+            <Drawer.Screen name='Shop' component={ShoppingCartScreen} />
+            <Drawer.Screen name='User' component={UserScreen} />
         </Drawer.Navigator>
     );
 }
