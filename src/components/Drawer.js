@@ -4,7 +4,7 @@ import HomeScreen from '../screens/homeScreen';
 import ProductsScreen from '../screens/productsScreen';
 import ContactScreen from '../screens/contactScreen';
 import ShoppingCartScreen from '../screens/shoppingCartScreen';
-import UserScreen from '../screens/user/UserScreen';
+import Tabs from './Tabs';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,7 +15,7 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Products' component={ProductsScreen} />
             <Drawer.Screen name='Contact' component={ContactScreen} />
             <Drawer.Screen name='Shop' component={ShoppingCartScreen} />
-            <Drawer.Screen name='User' component={UserScreen} />
+            <Drawer.Screen name='User' component={Tabs} />
         </Drawer.Navigator>
     );
 }

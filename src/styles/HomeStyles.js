@@ -45,6 +45,12 @@ export const HomeStyles = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold',
         marginBottom: '1%'
+    },
+    bodyContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
     }
 
 })
