@@ -8,7 +8,6 @@ import mainReducer from './src/redux/reducers/';
 const reduxStore = createStore(mainReducer, applyMiddleware(thunk))
 
 export default function Index(){
-
     return(
     <Provider store={reduxStore}>
         <App />
