@@ -34,16 +34,18 @@ const ProductsScreen = () =>{
                                 <Text style={ProductsStyles.priceMade}>Made by</Text>
                             </View>
                         </View>
-                        <Button
-                        onPress={()=> alert('hello')}
-                        title={'View more'}
-                        color={'black'}
-                        />
-                        <Button
-                        onPress={()=> alert('hola')}
-                        title={'Add'}
-                        color={'green'}
-                        />
+                        <View style={ProductsStyles.buttonsProducts}>
+                            <Button
+                            onPress={()=> alert('hello')}
+                            title={'View more'}
+                            color={'black'}
+                            />
+                            <Button
+                            onPress={()=> alert('hola')}
+                            title={'Add'}
+                            color={'green'}
+                            />
+                        </View>
                     </View>
                 </View>
             </View>

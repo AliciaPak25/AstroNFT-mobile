@@ -86,5 +86,12 @@ export const ProductsStyles = StyleSheet.create({
     },
     priceMade: {
         color: '#828282'
+    },
+    buttonsProducts: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '100%',
+        margin: '4%'
     }
 })
