@@ -2,6 +2,8 @@ import React from 'react';
 import {ScrollView, View, Image, Text, Button} from 'react-native';
 import ProductsHero from '../components/ProductsHero';
 import {ProductsStyles} from '../styles/ProductsStyles';
+import Search from '../components/Search';
+import Filters from '../components/FiltersProducts';
 
 const ProductsScreen = () =>{
     return(
@@ -9,8 +11,8 @@ const ProductsScreen = () =>{
             <View>
                 <ProductsHero />
                     <View>
-                        <Text>Search</Text>
-                        <Text>Dropdown</Text>
+                        <Search />
+                        <Filters />
                     </View>
                 <View style={ProductsStyles.cardProductContainer}>
                     <View style={ProductsStyles.cardProduct}>

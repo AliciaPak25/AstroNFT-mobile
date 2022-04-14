@@ -12,7 +12,7 @@ export default function DrawerNavigator() {
     return (
         <Drawer.Navigator initialRouteName='Home'>
             <Drawer.Screen name='Home' component={HomeScreen}/>
-            <Drawer.Screen name='Products' component={ProductsScreen} />
+            <Drawer.Screen name='Store' component={ProductsScreen} />
             <Drawer.Screen name='Contact' component={ContactScreen} />
             <Drawer.Screen name='Shop' component={ShoppingCartScreen} />
             <Drawer.Screen name='User' component={Tabs} />

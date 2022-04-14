@@ -32,16 +32,26 @@ export const ProductsStyles = StyleSheet.create({
         height: 600,
         marginTop: '5%',
         borderRadius: 20,
-        
     },
     cardProduct: {
         width: '90%',
-        backgroundColor: '#daecff',
+        backgroundColor: '#e7f0ff',
+   /*      borderWidth: 2,
+        borderColor: 'rgb(23, 82, 118)', */
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: '5%',
+        shadowColor: "rgb(23, 82, 118)",
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.51,
+        shadowRadius: 13.16,
+        
+        elevation: 20,
     },
     textCardProduct: {
         display: 'flex',
