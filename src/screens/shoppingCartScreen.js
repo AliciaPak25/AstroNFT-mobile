@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, Image, Button } from 'react-native';
 import { ShoppingStyle } from "../styles/ShoppingStyle"
-import CheckBox from 'react-native-check-box'
+import { CheckBox } from 'react-native-elements';
 
 const ShoppingCartScreen = () => {
-    const [isSelected, setSelection] = useState(false)
+    const [checked, setChecked] = useState(false);
 
     return (
         <View>
@@ -40,22 +40,20 @@ const ShoppingCartScreen = () => {
             </View>
             <View style={ShoppingStyle.cardContainer}>
                 <Image source={require("../../assets/paypal.png")} style={ShoppingStyle.imageShop} />
-                <View>
-                <Text style={ShoppingStyle.subTitle} >Paypal</Text>
-                <Text> Debit or Credit Card</Text>
-                <Text>Paypal Credit</Text>
-
-                <View style={ShoppingStyle.container}>
-
-                    <View style={ShoppingStyle.checkboxContainer}>
-                        <CheckBox
-                            value={isSelected}
-                            onValueChange={setSelection}
-                            style={ShoppingStyle.checkbox}
-                        />
-                        <Text style={ShoppingStyle.label}>Do you like React Native?</Text>
+                <View style={ShoppingStyle.cartCard}>
+                    <View style={ShoppingStyle.cartHeader}>
+                        <Text style={ShoppingStyle.subTitle}>Paypal</Text>
+                        
                     </View>
-                    <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text>
+                <View style={ShoppingStyle.paypalSelected}>
+                    <View>
+                        <Text>Debit or Credit Card</Text>
+                        <Text>Paypal Credit</Text>
+                        <CheckBox
+                                    checked={checked}
+                                    onPress={() => setChecked(!checked)}
+                        />
+                    </View>
                 </View>
                 </View>
             </View>

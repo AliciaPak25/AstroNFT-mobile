@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ImageBackground, Text, Image} from 'react-native';
+import {View, ImageBackground, Image} from 'react-native';
 import { ProductsStyles } from '../styles/ProductsStyles';
 
 const ProductsHero = () => { 

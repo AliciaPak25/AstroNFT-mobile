@@ -8,7 +8,7 @@ import Tabs from './Tabs';
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerNavigator() {
+function DrawerNavigator() {
     return (
         <Drawer.Navigator initialRouteName='Home'>
             <Drawer.Screen name='Home' component={HomeScreen}/>
@@ -19,4 +19,5 @@ export default function DrawerNavigator() {
         </Drawer.Navigator>
     );
 }
+export default DrawerNavigator;
 

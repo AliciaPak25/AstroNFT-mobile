@@ -16,7 +16,7 @@ const HomeHero = ({navigation}) => {
                         <View style={HomeStyles.containerTextHero}>
                             <Text style={HomeStyles.heroTitle}>Lorem Ipsum</Text>
                             <MyButton 
-                            onPress={() => navigation.navigate('Products')}
+                            onPress={() => navigation.navigate('Store')}
                             title={"Explore Products!"}
                             />
                         </View>
