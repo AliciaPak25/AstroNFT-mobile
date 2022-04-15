@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppRegistry, StyleSheet, Text, View, TextInput, TouchableHighlight, AlertIOS } from "react-native"
+import { AppRegistry, StyleSheet, Text, View, TextInput, TouchableHighlight, AlertIOS, Image } from "react-native"
 // import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 export default class SignUp extends Component {
@@ -77,6 +77,7 @@ export default class SignUp extends Component {
                         <Text style={styles.textButton}>Register</Text>
                     </TouchableHighlight>
                 </View>
+                <Image source={require("../../../assets/signUp.png")} style={styles.imageSignUp} />
             </View>
         )
     }
@@ -86,29 +87,47 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#3BAAFF",
-        paddingLeft: 15,
-        paddingRight: 15,
+
+
     },
     button: {
         backgroundColor: "#f2c94c",
         paddingTop: 15,
         paddingBottom: 15,
+        width: 300,
+        marginLeft: 50,
+        borderRadius: 10,
+        marginTop: 20,
     },
     textButton: {
         textAlign: "center",
         color: "#ffff",
-
+        fontWeight: "bold",
+        fontSize: 15,
     },
     title: {
         textAlign: "center",
-        fontSize: 18,
-        marginBottom: 5,
+        fontSize: 20,
+        marginBottom: 30,
+        marginTop: 30,
+        fontWeight: "bold",
+        color: "white",
     },
     input: {
         height: 40,
         borderColor: "#E9E5E5",
         borderWidth: 2,
         marginBottom: 20,
+        padding: 10,
+        color: "white",
+        borderRadius: 10,
+        width: "90%",
+        marginLeft: 20,
     },
+    imageSignUp: {
+        display: "flex",
+        width: "100%",
+        height: 240,
+    }
 })
 AppRegistry.registerComponent("SignUp", () => SignUp);
