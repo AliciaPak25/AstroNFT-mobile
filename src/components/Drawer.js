@@ -5,6 +5,7 @@ import ProductsScreen from '../screens/productsScreen';
 import ContactScreen from '../screens/contactScreen';
 import ShoppingCartScreen from '../screens/shoppingCartScreen';
 import Tabs from './Tabs';
+import { connect } from "react-redux";
 
 const Drawer = createDrawerNavigator();
 
@@ -19,5 +20,5 @@ function DrawerNavigator() {
         </Drawer.Navigator>
     );
 }
-export default DrawerNavigator;
 
+export default connect(null, null)(DrawerNavigator);

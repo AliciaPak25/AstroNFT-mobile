@@ -46,3 +46,37 @@ export default function MyButton({children, onPress, type, size, title, rounded,
         </TouchableOpacity>
     );
 }
+
+export function ButtonsNFT({children, onPress, type, size, title, rounded, navigation}) {
+
+    const buttonSize = SIZES.includes(size) ? size : 'small';
+    const buttonType = TYPES.includes(type) ? type : 'yellow';
+    const buttonRound = ROUNDED.includes(rounded) ? rounded : 'small';
+
+    const btnStyle = {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 40,
+        width: buttonSize === 'large' ? '90%' : buttonSize === 'medium' ? 210 : 'auto',
+        marginLeft: 25,
+        backgroundColor: buttonType === 'yellow',
+        borderRadius: buttonRound === 'small' ? 5 : buttonRound === 'medium' ? 10 : 20,
+        shadowColor: Colors.yellow,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: .9,
+        shadowRadius: 8,
+    }
+
+    return(
+        <TouchableOpacity
+        style={btnStyle} 
+        onPress={onPress}
+        >
+            <Text style={{color: '#FFF', fontSize: 16, fontWeight: 'bold'}}>{title}</Text>
+        </TouchableOpacity>
+    );
+}

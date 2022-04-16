@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, View, TextInput, TouchableHighlight, AlertIOS, Image } from "react-native"
-import RNPickerSelect from "react-native-picker-select"
 
+import Picker from "../components/Picker";
 
 export default class Contact extends Component {
 
@@ -28,9 +28,7 @@ export default class Contact extends Component {
     changeMessage(message) {
         this.setState({ message })
     }
-    changePicker(picker) {
-        this.setState({ picker })
-    }
+
 
     buttonPressed() {
         if (this.state.firstName && this.state.lastName && this.state.phone && this.state.message && this.state.picker) {
@@ -63,18 +61,8 @@ export default class Contact extends Component {
                         onChangeText={(phone) => this.changePhone(phone)}
                     />
 
-                    <RNPickerSelect
-                        onValueChange={(value) => console.log(value)}
-                        placeholder="select an option"
-                        value={this.state.picker}
-                        onChangeText={(picker) => this.changePicker(picker)}
-                        style={styles.select}
-                        items={[
-                            { label: "Inquiry", value: "Inquiry", color: "black" },
-                            { label: "Claims", value: "Claims" },
-                            { label: "Suggestions", value: "Suggestions" }
-                        ]}
-                    />
+                    <Picker />
+
                     <TextInput
                         multiline={true}
                         style={[styles.input, styles.txtArea]}
@@ -136,14 +124,10 @@ const styles = StyleSheet.create({
         padding: 10,
         color: "white",
     },
-    select: {
-        color: 'red',
-        borderColor: 'white',
-    },
     imageContact: {
         width: "100%",
         height: 300,
-        marginTop: 50,
+        marginTop: 55,
     },
     txtArea: {
         height: 100,
