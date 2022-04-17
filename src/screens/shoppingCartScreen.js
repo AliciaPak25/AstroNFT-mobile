@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import ProductActions from "../redux/actions/ProductActions";
 import UserActions from "../redux/actions/UserActions";
 import axios from "axios";
+/* import NFTStackNavigator from '../components/Stack'; */
 
 const ShoppingCartScreen = (props) => {
     const [checked, setChecked] = useState(false);
@@ -48,19 +49,25 @@ const ShoppingCartScreen = (props) => {
         getBNB();
     }, []);
 
+    const idProducts = props.basket
+    const filteredProducts = idProducts.basket.map(filter=> props.allProducts.filter(filtering=> filtering._id === filter))
+    const emptyArray = []
+    filteredProducts.map(filter=> {emptyArray.push(filter.name)})
+
+    console.log(emptyArray);
     return (
         <>
-            {props.user?.user?.basket.length !== 0
-        ? props.user?.user?.basket.map((products) => (
+            {props.basket?.length !== 0
+        ? filteredProducts.map((products) => (
             <View>
             <View style={ShoppingStyle.title}>
                 <Text style={{fontWeight: 'bold'}}>Cart</Text>
             </View>
-            <View style={ShoppingStyle.cardContainer}>
+            <View style={ShoppingStyle.cardContainer} key={products._id}>
                 <Image source={require("../../assets/shop.png")} style={ShoppingStyle.imageShop} />
                 <View style={ShoppingStyle.cartCard}>
                     <View style={ShoppingStyle.cartHeader}>
-                        <Text style={ShoppingStyle.cartCardTitle}>{products.nftId.name} by GIIO</Text>
+                        <Text style={ShoppingStyle.cartCardTitle}>{products.name}</Text>
                         <Image source={require("../../assets/cruz.png")} style={ShoppingStyle.cross} />
                     </View>
                     <View style={ShoppingStyle.productsCategories}>
@@ -118,6 +125,7 @@ const ShoppingCartScreen = (props) => {
     return {
       user: state.UserReducer.user,
       allProducts: state.ProductReducer.allProducts,
+      basket: state.UserReducer.basket
     };
   };
 

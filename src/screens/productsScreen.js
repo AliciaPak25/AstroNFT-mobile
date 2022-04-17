@@ -11,6 +11,7 @@ import { Video } from 'expo-av';
 import axios from "axios";
 import {Ionicons} from "@expo/vector-icons";
 import { useDispatch } from 'react-redux';
+/* import NFTStackNavigator from '../components/Stack'; */
 
 const ProductsScreen = (props) =>{
     const video = React.useRef(null);
@@ -19,6 +20,8 @@ const ProductsScreen = (props) =>{
     const [BTC, setBTC] = useState();
     const [ETH, setETH] = useState();
     const [BNB, setBNB] = useState();
+    const [reload, setReload] = useState(false);
+    const basket = []
 
     const getBTC = async () => {
       try {
@@ -58,23 +61,20 @@ const ProductsScreen = (props) =>{
         getBTC();
         getETH();
         getBNB();
-    }, []);
+    }, [reload]);
 
-    const addBasket = (id) => {
-      console.log(id)
-      const idBasket = []
-      idBasket.push(id)
-      console.log(idBasket);
-      dispatch({type: 'cart', payload: {view: true, basket: idBasket}})
-      
+    async function addBasket(id) {
+      basket.push(id)
+      dispatch({type: 'cart', payload: {basket: basket}})
+      console.log(basket);
     }
 
     function financial(x) {
       return Number.parseFloat(x).toFixed(2);
     }
-
     return(
       <ScrollView>
+        {/* <NFTStackNavigator />  */}
         <View>
 
           <ProductsHero />

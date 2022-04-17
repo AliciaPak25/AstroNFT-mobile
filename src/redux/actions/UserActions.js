@@ -1,5 +1,6 @@
 import axios from "axios";
-
+/* import SyncStorage from 'sync-storage';
+ */
 const UserActions = {
 
     userSignUp: (data) => {
@@ -12,12 +13,16 @@ const UserActions = {
         console.log(data)
         return async (dispatch, gerState) => {
             const res = await axios.post('https://astronft.herokuapp.com/api/user/signin', { data });
+            /* const token = await localStorage.setItem(res.data.response.token) */
             console.log(res)
-            console.log(res.data.response.user)
-            /* if (res.data.success) {
+            /* console.log(res.data.response.user) */
+            if (res.data.success) {
                 dispatch({ type: 'user', payload: { user: res.data.response.user, success: res.data.success, message: res.data.message, view: true } })
-                localStorage.setItem('token', res.data.response.token)
-            } */
+         /*        SyncStorage.set('token', res.data.response.token);
+
+                const result = SyncStorage.get('token');
+                console.log(result); */
+            }
 
         }
     },
@@ -44,11 +49,7 @@ const UserActions = {
         return async (dispatch, getSatate) => {
             const addNft = await axios.post(`https://astronft.herokuapp.com/api/bascket`, { id, userId, })
             console.log(addNft)
-            if (addNft.data.success) {
-                const token = localStorage.getItem("token")
-                const user = await axios.get('https://astronft.herokuapp.com/api/user/token', { headers: { 'Authorization': 'Bearer ' + token } })
-                dispatch({ type: 'user', payload: { message: addNft.data.response.message, user: user.data.response, success: addNft.data.success, view: true } })
-            }
+            
         }
     },
     delteNftToBasket: (id) => {

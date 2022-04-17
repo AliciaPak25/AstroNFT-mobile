@@ -37,9 +37,9 @@ class SignIn extends Component {
             AlertIOS.alert("ERROR!!")
         } */
 
-    
+        console.log(this.props.user);
 }
-
+    
     render() {
         return (
             <View style={styles.container}>
@@ -146,8 +146,14 @@ const styles = StyleSheet.create({
 })
 AppRegistry.registerComponent("SignIn", () => SignIn);
 
+const mapStateToProps = (state) => {
+    return {
+    user: state.UserReducer.user,
+    };
+};
+
 const mapDispatchToProps = {
     userLoging: UserActions.userLoging,
 }
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
