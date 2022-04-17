@@ -9,13 +9,15 @@ const UserActions = {
         }
     },
     userLoging: (data) => {
+        console.log(data)
         return async (dispatch, gerState) => {
             const res = await axios.post('https://astronft.herokuapp.com/api/user/signin', { data });
+            console.log(res)
             console.log(res.data.response.user)
-            if (res.data.success) {
+            /* if (res.data.success) {
                 dispatch({ type: 'user', payload: { user: res.data.response.user, success: res.data.success, message: res.data.message, view: true } })
                 localStorage.setItem('token', res.data.response.token)
-            }
+            } */
 
         }
     },

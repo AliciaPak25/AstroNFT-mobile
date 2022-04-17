@@ -4,6 +4,7 @@ const initialState = {
         message: '',
         success: null,
     },
+    basket: []
 }
 
 const UserReducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const UserReducer = (state = initialState, action) => {
                 ...state,
                 user: action.payload,
             }
+
+        case 'cart':
+                return {
+                    ...state,
+                    basket: action.payload,
+                }
         default:
             return state
     }

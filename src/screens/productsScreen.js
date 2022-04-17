@@ -10,7 +10,7 @@ import UserActions from "../redux/actions/UserActions"
 import { Video } from 'expo-av';
 import axios from "axios";
 import {Ionicons} from "@expo/vector-icons";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 
 const ProductsScreen = (props) =>{
     const video = React.useRef(null);
@@ -61,15 +61,12 @@ const ProductsScreen = (props) =>{
     }, []);
 
     const addBasket = (id) => {
-      const userId = props.user?.user?.id
-      console.log(props.user.user)
-      const searchNftInBasket = props.user?.user?.basket.filter(filter => filter.nftId._id === id)
-      {
-        userId === undefined ? props.navigation.navigate('User') :
-          searchNftInBasket.length === 1 ?
-            dispatch({ type: 'user', payload: { view: true, message: "You have already added this nft to the basket", user: props.user.user } }) :
-            props.addToBasket(id, userId)
-      }
+      console.log(id)
+      const idBasket = []
+      idBasket.push(id)
+      console.log(idBasket);
+      dispatch({type: 'cart', payload: {view: true, basket: idBasket}})
+      
     }
 
     function financial(x) {
@@ -94,7 +91,6 @@ const ProductsScreen = (props) =>{
                 ) : (
                   <Video
                     ref={video}
-                    /* style={styles.video} */
                     style={ProductsStyles.imageCardProduct}
                     source={{
                       uri: product.file
@@ -137,7 +133,7 @@ const ProductsScreen = (props) =>{
                             title={'Add'}
                             color={'green'}
                             />
-                            <Ionicons name="cart" size={20} color={'black'}/>
+                            {/* <Ionicons name="cart" size={20} color={'black'}/> */}
                         </View>
                     </View>
 

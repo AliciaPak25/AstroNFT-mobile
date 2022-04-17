@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, View, TextInput, TouchableHighlight, AlertIOS, Image } from "react-native"
-// import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import { connect } from "react-redux";
+import UserActions from "../../redux/actions/UserActions";
 
-export default class SignUp extends Component {
-    constructor() {
-        super()
+class SignUp extends Component {
+    constructor(props) {
+        super(props)
         this.state = {
             firstName: "",
             lastName: "",
@@ -14,19 +15,19 @@ export default class SignUp extends Component {
         }
     }
     changefirstName(firstName) {
-        this.setState({ firstName })
+        this.setState(firstName)
     }
     changelastName(lastName) {
-        this.setState({ lastName })
+        this.setState(lastName)
     }
     changeMail(mail) {
-        this.setState({ mail })
+        this.setState(mail)
     }
     changePassword(password) {
-        this.setState({ password })
+        this.setState(password)
     }
     changePhoto(photo) {
-        this.setState({ photo })
+        this.setState(photo)
     }
     buttonPressed() {
         if (this.state.mail && this.state.password) {
@@ -34,12 +35,29 @@ export default class SignUp extends Component {
         } else {
             AlertIOS.alert("ERROR!!")
         }
+
+    const signup = (event) => {
+        event.preventDefault(event)
+
+        const data = {
+            firstName: event.target[0].value,
+            lastName: event.target[1].value,
+            email: event.target[2].value,
+            password: event.target[3].value,
+            image: event.target[4].value,
+            from: "signup",
+        }
+        props.userSignUp(data)
+        console.log(data)
     }
+
+}
     render() {
         return (
             <View style={styles.container}>
                 <View>
                     <Text style={styles.title}>Sign Up</Text>
+    
                     <TextInput
                         style={styles.input}
                         placeholder="First Name"
@@ -131,3 +149,15 @@ const styles = StyleSheet.create({
     }
 })
 AppRegistry.registerComponent("SignUp", () => SignUp);
+
+const mapDispatchToProps = {
+    userSignUp: UserActions.userSignUp,
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.UserReducer.user
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
