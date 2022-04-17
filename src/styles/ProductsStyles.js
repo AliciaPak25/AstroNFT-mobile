@@ -28,16 +28,13 @@ export const ProductsStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        
         height: 600,
-        marginTop: '5%',
+        /* marginTop: '2%', */
         borderRadius: 20,
     },
     cardProduct: {
         width: '90%',
         backgroundColor: '#e7f0ff',
-   /*      borderWidth: 2,
-        borderColor: 'rgb(23, 82, 118)', */
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
@@ -93,5 +90,15 @@ export const ProductsStyles = StyleSheet.create({
         justifyContent: 'space-around',
         width: '100%',
         margin: '4%'
+    },
+    Cart: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '3%'
+    },
+    cartText: {
+        fontSize: 20,
     }
 })

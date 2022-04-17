@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, View, Image, Text, Button, StyleSheet} from 'react-native';
+import {ScrollView, View, Image, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
 import ProductsHero from '../components/ProductsHero';
 import {ProductsStyles} from '../styles/ProductsStyles';
 import Search from '../components/Search';
@@ -21,8 +21,10 @@ const ProductsScreen = (props) =>{
     const [ETH, setETH] = useState();
     const [BNB, setBNB] = useState();
     const [reload, setReload] = useState(false);
-    const basket = []
+    const basket = props.basket.basket
+    const lengthBasket = props?.basket?.basket?.length
 
+    console.log(lengthBasket); 
     const getBTC = async () => {
       try {
         const res = await axios.get(
@@ -72,6 +74,7 @@ const ProductsScreen = (props) =>{
     function financial(x) {
       return Number.parseFloat(x).toFixed(2);
     }
+
     return(
       <ScrollView>
         {/* <NFTStackNavigator />  */}
@@ -80,7 +83,14 @@ const ProductsScreen = (props) =>{
           <ProductsHero />
           <View>
             <Search />
-            <Filters />
+            {/* <Filters /> */}
+          </View>
+          <View style={ProductsStyles.Cart}>
+          <Text style={ProductsStyles.cartText}>Your Cart: </Text>
+          <Ionicons name="cart" size={25} color={'#83B1FF'}/>
+          <View>
+            <Text style={{color: 'black'}}>{lengthBasket == undefined ? '0' : lengthBasket}</Text>
+          </View>
           </View>
 
           {props?.allProducts && props.filteredProducts.length > 0 ? (props.filteredProducts.map((product) => (
@@ -128,6 +138,7 @@ const ProductsScreen = (props) =>{
                             title={'View more'}
                             color={'black'}
                             />
+                            
                             <Button
                             onPress={()=> addBasket(product._id)}
                             title={'Add'}
@@ -170,6 +181,7 @@ const mapStateToProps = (state) => {
       allProducts: state.ProductReducer.allProducts,
       user: state.UserReducer.user,
       filteredProducts: state.ProductReducer.filteredProducts,
+      basket: state.UserReducer.basket,
     };
   };
   

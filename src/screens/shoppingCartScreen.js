@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, Text, Image, Button } from 'react-native';
+import { ScrollView, View, Text, Image, Button, TouchableOpacity } from 'react-native';
 import { ShoppingStyle } from "../styles/ShoppingStyle"
 import { CheckBox } from 'react-native-elements';
 import { connect } from "react-redux";
 import ProductActions from "../redux/actions/ProductActions";
 import UserActions from "../redux/actions/UserActions";
 import axios from "axios";
-/* import NFTStackNavigator from '../components/Stack'; */
+import { useDispatch } from 'react-redux';
+import {Ionicons} from "@expo/vector-icons";
 
 const ShoppingCartScreen = (props) => {
     const [checked, setChecked] = useState(false);
     const [ETH, setETH] = useState();
     const [BNB, setBNB] = useState();
+    const dispatch = useDispatch()
+    const [reload, setReload] = useState(false)
 
-    const deleteNft = (id) => {
-        props.delteNftToBasket(id);
-        console.log(id);
-    };
+    useEffect(() => {
+        getETH();
+        getBNB();
+    }, [reload]);
 
     const getETH = async () => {
         try {
@@ -44,46 +47,58 @@ const ShoppingCartScreen = (props) => {
         return Number.parseFloat(x).toFixed(2);
     }
 
-    useEffect(() => {
-        getETH();
-        getBNB();
-    }, []);
-
-    const idProducts = props.basket
+    const idProducts = props?.basket
     const filteredProducts = idProducts.basket.map(filter=> props.allProducts.filter(filtering=> filtering._id === filter))
-    const emptyArray = []
-    filteredProducts.map(filter=> {emptyArray.push(filter.name)})
+    const CartProducts = []
+    filteredProducts.map(filter=> {CartProducts.push(...filter)})
 
-    console.log(emptyArray);
+    function deleteBasket(id) {
+        const basket = idProducts.basket.filter(filter=> filter !== id)
+        dispatch({type: 'cart', payload: {basket: basket}})
+        setReload(!reload)
+        console.log(basket)
+    }
+    console.log(props.basket)
     return (
         <>
             {props.basket?.length !== 0
-        ? filteredProducts.map((products) => (
+        ? CartProducts.map((products) => (
             <View>
             <View style={ShoppingStyle.title}>
                 <Text style={{fontWeight: 'bold'}}>Cart</Text>
             </View>
             <View style={ShoppingStyle.cardContainer} key={products._id}>
-                <Image source={require("../../assets/shop.png")} style={ShoppingStyle.imageShop} />
+                <Image source={{uri: products.file}} style={ShoppingStyle.imageShop} />
                 <View style={ShoppingStyle.cartCard}>
                     <View style={ShoppingStyle.cartHeader}>
                         <Text style={ShoppingStyle.cartCardTitle}>{products.name}</Text>
-                        <Image source={require("../../assets/cruz.png")} style={ShoppingStyle.cross} />
+                        <TouchableOpacity onPress={() => deleteBasket(products._id)}>
+                        <Ionicons name="close" size={20} color={'black'} />
+                        </TouchableOpacity>
+                        
+                        {/* <Image
+                        source={require("../../assets/cruz.png")}
+                        style={ShoppingStyle.cross}
+                        onPress={deleteBasket(products._id)}
+                        /> */}
                     </View>
                     <View style={ShoppingStyle.productsCategories}>
                         <Text style={{color: '#828282', marginRight: '1%'}}>CATEGORY:</Text>
-                        <Text>Premium</Text>
+                        <Text>{products.category}</Text>
                     </View>
                     <View style={ShoppingStyle.productsCategories}>
                         <Text style={{color: '#828282', marginRight: '1%'}}>TYPE:</Text>
-                        <Text>image</Text>
+                        <Text>{products.fileType}</Text>
                     </View>
 
                     <View style={ShoppingStyle.price}>
                         <Image source={require("../../assets/IconEth.png")} style={ShoppingStyle.eth} />
-                        <Text>0.121 ETh</Text>
+                        <Text>{products.price} {products.token}</Text>
                     </View>
-                    <Text>= $ 46.828,55</Text>
+                     <Text>USD {products.token == "ETH"
+                  ? financial(products.price * ETH?.ethereum.usd) + " "
+                  : financial(products.price * BNB?.binancecoin.usd) + " "}
+                </Text>
                     
                 </View>
             </View>
