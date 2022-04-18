@@ -7,13 +7,17 @@ const BodyHome = () => {
         <View style={HomeStyles.bodyContainer}>
                 <View style={HomeStyles.bodyCard}>
                     <Image source={require('../../assets/imageHome1.png')} alt='astronaut-with-flag' style={HomeStyles.imagesBody}/>
-                    <Text style={HomeStyles.titleBodyCard}>Lorem ipsum dolor sit amet, consectetur</Text>
-                    <Text style={HomeStyles.textBodyCard}>Proin turpis mauris elementum adipiscing leo. At mauris pellentesque eget imperdiet. Porttitor aliquet iaculis sed arcu diam et, sit. Cras ut proin quis consequat fringilla orci, velit, quis. Malesuada tellus facilisi odio lectus blandit morbi risus. Quis mattis proin pretium accumsan, scelerisque luctus.nulla. Vitae est duis vitae lacus, purus molestie tellus. Feugiat odio varius ullamcorper pulvinar sagittis sed vulputate quis. Odio urna, id amet quam interdum elementum sed. Senectus sollicitudin tortor, mi, a quis</Text>
+                    <Text style={HomeStyles.titleBodyCard}>What is a NFT?</Text>
+                    <Text style={HomeStyles.textBodyCard}>
+
+NFT stands for non-fungible token. It's generally built using the same kind of programming as cryptocurrency, like Bitcoin or Ethereum, but that's where the similarity ends.The reason is that  physical money and cryptocurrencies are “fungible,” meaning they can be traded or exchanged for one another.</Text>
                 </View>
                 <View style={HomeStyles.bodyCard}>
                     <Image source={require('../../assets/imageHome2.png')} alt='astronaut-with-flag' style={HomeStyles.imagesBody}/>
-                    <Text style={HomeStyles.titleBodyCard}>Lorem ipsum dolor sit amet, consectetur</Text>
-                    <Text style={HomeStyles.textBodyCard}>Proin turpis mauris elementum adipiscing leo. At mauris pellentesque eget imperdiet. Porttitor aliquet iaculis sed arcu diam et, sit. Cras ut proin quis consequat fringilla orci, velit, quis. Malesuada tellus facilisi odio lectus blandit morbi risus. Quis mattis proin pretium accumsan, scelerisque luctus.nulla. Vitae est duis vitae lacus, purus molestie tellus. Feugiat odio varius ullamcorper pulvinar sagittis sed vulputate quis. Odio urna, id amet quam interdum elementum sed. Senectus sollicitudin tortor, mi, a quis</Text>
+                    <Text style={HomeStyles.titleBodyCard}>About Us:</Text>
+                    <Text style={HomeStyles.textBodyCard}>
+We are a company who built the biggest marketplace of NFTs in the world, in our website you can sell and buy NTFs safely with the privacity you need.
+</Text>
                 </View>
                 
         </View>

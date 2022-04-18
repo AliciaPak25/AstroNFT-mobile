@@ -22,7 +22,7 @@ const ProductsScreen = (props) =>{
     const [reload, setReload] = useState(false);
     const basket = []
     const lengthBasket = props?.basket?.basket?.length
-
+    
     console.log(lengthBasket); 
     const getBTC = async () => {
       try {

@@ -14,7 +14,7 @@ const HomeHero = ({navigation}) => {
                     </View>
                     <View style={HomeStyles.containerHero}>
                         <View style={HomeStyles.containerTextHero}>
-                            <Text style={HomeStyles.heroTitle}>Lorem Ipsum</Text>
+                            <Text style={HomeStyles.heroTitle}>Sell and buy NFTs</Text>
                             <MyButton 
                             onPress={() => navigation.navigate('Store')}
                             title={"Explore Products!"}
