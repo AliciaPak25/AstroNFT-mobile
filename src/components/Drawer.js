@@ -13,10 +13,6 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
     return (
-        <>
-
-        <Ionicons name="cart" size={20} color={'green'} style={styles.icon}/>
-        
         <Drawer.Navigator initialRouteName='Home'>
             <Drawer.Screen name='Home' component={HomeScreen}/>
             <Drawer.Screen name='Store' component={ProductsScreen} />
@@ -24,10 +20,6 @@ function DrawerNavigator() {
             <Drawer.Screen name='Shop' component={ShoppingCartScreen} />
             <Drawer.Screen name='User' component={Tabs} />
         </Drawer.Navigator>
-        
-
-        
-        </>
     );
 }
 

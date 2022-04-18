@@ -7,7 +7,6 @@ import Filters from '../components/FiltersProducts';
 import { connect } from "react-redux";
 import ProductActions from "../redux/actions/ProductActions"
 import UserActions from "../redux/actions/UserActions"
-import { Video } from 'expo-av';
 import axios from "axios";
 import {Ionicons} from "@expo/vector-icons";
 import { useDispatch } from 'react-redux';
@@ -21,7 +20,7 @@ const ProductsScreen = (props) =>{
     const [ETH, setETH] = useState();
     const [BNB, setBNB] = useState();
     const [reload, setReload] = useState(false);
-    const basket = props.basket.basket
+    const basket = []
     const lengthBasket = props?.basket?.basket?.length
 
     console.log(lengthBasket); 
@@ -66,6 +65,7 @@ const ProductsScreen = (props) =>{
     }, [reload]);
 
     async function addBasket(id) {
+      /* {props.basket?.basket?.length !== 0 ? basket = props.basket?.basket : basket = []} */
       basket.push(id)
       dispatch({type: 'cart', payload: {basket: basket}})
       console.log(basket);
@@ -73,8 +73,8 @@ const ProductsScreen = (props) =>{
 
     function financial(x) {
       return Number.parseFloat(x).toFixed(2);
-    }
-
+      }
+      console.log(lengthBasket);
     return(
       <ScrollView>
         {/* <NFTStackNavigator />  */}
@@ -96,22 +96,8 @@ const ProductsScreen = (props) =>{
           {props?.allProducts && props.filteredProducts.length > 0 ? (props.filteredProducts.map((product) => (
             <View style={ProductsStyles.cardProductContainer} key={product._id}>
               <View style={ProductsStyles.cardProduct}>
-                {product.file.split(".")[3] === "png" || product.file.split(".")[3] === "gif" ? (
+                
                   <Image source={{uri: product.file}} style={ProductsStyles.imageCardProduct} />
-                ) : (
-                  <Video
-                    ref={video}
-                    style={ProductsStyles.imageCardProduct}
-                    source={{
-                      uri: product.file
-                    }}
-                    useNativeControls
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={setStatus}
-                  />
-                )}
-
                         <View style={ProductsStyles.textCardProduct}>
                         <Text style={ProductsStyles.titleCard}>{product.name}</Text>
                         <View style={ProductsStyles.containerText}>

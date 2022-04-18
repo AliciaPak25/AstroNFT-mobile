@@ -59,6 +59,8 @@ const ShoppingCartScreen = (props) => {
         console.log(basket)
     }
     console.log(props.basket)
+
+    
     return (
         <>
             {props.basket?.length !== 0
@@ -99,9 +101,10 @@ const ShoppingCartScreen = (props) => {
                   ? financial(products.price * ETH?.ethereum.usd) + " "
                   : financial(products.price * BNB?.binancecoin.usd) + " "}
                 </Text>
-                    
                 </View>
+                
             </View>
+            
           {/*   <View style={ShoppingStyle.title}>
                 <Text style={{fontWeight: 'bold'}}>Method</Text>
             </View>
@@ -132,7 +135,14 @@ const ShoppingCartScreen = (props) => {
             </View>
         ))
         : ""}
-        
+        <TouchableOpacity>
+            <Button
+             onPress={() => alert('Your purchase has been confirmed')}
+             title={'Purchase'}
+             color={'black'}
+            />
+        </TouchableOpacity>
+
         </>
     );
 }
