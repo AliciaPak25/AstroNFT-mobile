@@ -8,7 +8,7 @@ import UserActions from "../redux/actions/UserActions";
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import {Ionicons} from "@expo/vector-icons";
-/* import MyButton from '../components/buttons/Buttons' */
+import MyButton from '../components/buttons/Buttons'
 
 const ShoppingCartScreen = (props) => {
     const [checked, setChecked] = useState(false);
@@ -136,14 +136,14 @@ const ShoppingCartScreen = (props) => {
             </View>
         ))
         : ""}
-        {/* <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: '5%'}}>
+        <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: '5%'}}>
         <TouchableOpacity >
             <MyButton
                 title={"Purchase"}
                 onPress={() => alert('Your purchase has been confirmed')}
             />
         </TouchableOpacity>
-        </View> */}
+        </View>
         </>
     );
 }
